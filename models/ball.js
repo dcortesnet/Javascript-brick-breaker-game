@@ -29,12 +29,10 @@ class Ball {
     // Se debe sumar ya que cada vez que se pinte se moverá 3 pixeles por defecto en vertical y horizontal
     this.coordX += this.speedX;
     this.coordY += this.speedY;
-    console.log(this.coordX);
-    console.log(this.coordY);
   }
 
   collideY(){
-    
+
   }
 
   collideX(){
