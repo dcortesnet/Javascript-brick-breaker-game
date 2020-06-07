@@ -21,6 +21,23 @@ class Canvas {
     this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
   }
 
+
+  /**
+   * Método que detecta colisiones para cambiar ejes de la pelota
+   */
+  detectedBallCollision(){
+    
+    // 1 Detectar colisión entre el eje x del canvas y la pelota x
+    if(this.ball.coordX >= (this.canvas.width -10) || this.ball.coordX <= 10){
+      this.ball.collideX();
+    }
+
+    // 2. Detectar colisión entre el eje y del canvas y la pelota y
+    if(this.ball.coordY >= (this.canvas.height -10) || this.ball.coordY <= 10){
+      this.ball.collideY();
+    }
+  }
+
   /**
    * Método para actualizar el canvas en cada fotograma
    */
@@ -29,6 +46,7 @@ class Canvas {
       
       this.cleanCanvas();
       this.drawBall();
+      this.detectedBallCollision();
 
 
     }, this.secondsToUpdate);
