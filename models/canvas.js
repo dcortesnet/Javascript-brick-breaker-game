@@ -8,25 +8,16 @@ class Canvas {
   }
 
   /**
-   * Método para dibujar la pelota
-   */
-  drawBall() {
-    this.ball.draw(this.ctx);
-  }
-
-  /**
    * Método para limpiar el lienzo
    */
   cleanCanvas(){
     this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
   }
 
-
   /**
    * Método que detecta colisiones para cambiar ejes de la pelota
    */
-  detectedBallCollision(){
-    
+  checkCollideBall(){
     // 1 Detectar colisión entre el eje x del canvas y la pelota x
     if(this.ball.coordX >= (this.canvas.width -10) || this.ball.coordX <= 10){
       this.ball.collideX();
@@ -45,9 +36,8 @@ class Canvas {
     setInterval(() => {
       
       this.cleanCanvas();
-      this.drawBall();
-      this.detectedBallCollision();
-
+      this.ball.updateBall(this.ctx);
+      this.checkCollideBall();
 
     }, this.secondsToUpdate);
   }

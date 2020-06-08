@@ -23,7 +23,7 @@ class Ball {
    * Además suma + speedX y speedY a la posición actual del circulo X e Y
    * @param {} ctx
    */
-  draw(ctx) {
+  updateBall(ctx) {
     ctx.beginPath();
     ctx.arc(this.coordX, this.coordY, this.ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "#0095DD";
