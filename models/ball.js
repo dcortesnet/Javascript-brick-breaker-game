@@ -20,16 +20,23 @@ class Ball {
 
   /**
    * Método que dibuja el circulo
-   * Además suma + speedX y speedY a la posición actual del circulo X e Y
    * @param {} ctx
    */
-  updateBall(ctx) {
+  draw(ctx) {
     ctx.beginPath();
     ctx.arc(this.coordX, this.coordY, this.ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
-    // Se debe sumar ya que cada vez que se pinte se moverá 3 pixeles por defecto en vertical y horizontal
+  }
+
+  move(){
+    if(this.coordX >= (settings.canvasWidth -10) || this.coordX <= 10){
+      this.collideX();
+    }
+    if(this.coordY >= (settings.canvasHeight -10) || this.coordY <= 10){
+      this.collideY();
+    }
     this.coordX += this.speedX;
     this.coordY += this.speedY;
   }

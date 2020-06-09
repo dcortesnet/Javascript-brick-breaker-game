@@ -1,6 +1,6 @@
 function runApp(){
-  let canvas = new Canvas();
-  canvas.updateCanvas();
+  let game = new Game();
+  game.run();
 }
 
 runApp();
