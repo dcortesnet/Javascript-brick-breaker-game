@@ -34,7 +34,7 @@ class Ball {
     if(this.coordX >= (settings.canvasWidth -10) || this.coordX <= 10){
       this.collideX();
     }
-    if(this.coordY >= (settings.canvasHeight -10) || this.coordY <= 10){
+    if(this.coordY <= 10){
       this.collideY();
     }
     this.coordX += this.speedX;
