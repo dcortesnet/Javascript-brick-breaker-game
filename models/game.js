@@ -2,12 +2,12 @@ class Game {
 
   /**
    * Se indica cada cuantos milisegundos debe actualizar el canvas
-   * @param {number} secondsToUpdate 
+   * @param {number} timeUpdate 
    */
-  constructor(secondsToUpdate=15) {
+  constructor(timeUpdate=15) {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.secondsToUpdate = secondsToUpdate;
+    this.timeUpdate = timeUpdate;
     this.ball = new Ball(settings.canvasWidth / 2, settings.canvasHeight - 30);
     this.pallet = new Pallet()
   }
@@ -18,7 +18,7 @@ class Game {
       this.ball.draw(this.ctx);
       this.pallet.draw(this.ctx);
       this.ball.move();
-    }, this.secondsToUpdate);
+    }, this.timeUpdate);
   }
 
   /**

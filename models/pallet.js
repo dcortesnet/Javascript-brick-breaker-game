@@ -4,8 +4,8 @@ class Pallet {
     this.width = 120;
     this.height = 10;
     this.coordX = (settings.canvasWidth / 2) - 60;
-    this.speedX = 0;
-    document.addEventListener('keydown', this.move, false)
+    this.speedX = 10;
+    document.addEventListener('keydown',  (e) => this.move(e), false)
   }
 
   draw(ctx){
@@ -17,13 +17,13 @@ class Pallet {
   }
 
   move(event){
-    if(event.keyCode == 37){
-      console.log('Izquierda');
-    }
-    else if(event.keyCode == 39){
-      console.log('Derecha');
-    } else{
-      console.log('No se ha movido');
+    switch (event.keyCode){
+      case 37:
+        this.moveLeft();
+      break;
+      case 39:
+        this.moveRight();
+      break;
     }
   }
 
@@ -32,7 +32,9 @@ class Pallet {
      dibujar la paleta en la pantalla con cordenada diferente ( Hacia la derecha )
    */
   moveRight(){
-
+    if(this.coordX <= 350){
+      this.coordX += this.speedX;
+    }
   }
 
   /**
@@ -40,13 +42,8 @@ class Pallet {
    dibujar la paleta en la pantalla con cordenada diferente ( Hacia la izquierda )
   */
   moveLeft(){
-
-  }
-
-  /**
-   * Método que conserva la posición actual de la coordenada en X
-   */
-  dontMove(){
-    this.speedX = 0;
+    if(this.coordX >= 10){
+      this.coordX -= this.speedX;
+    }
   }
 }
