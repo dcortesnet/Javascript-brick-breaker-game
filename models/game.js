@@ -1,22 +1,23 @@
 class Game {
 
-  /**
-   * Se indica cada cuantos milisegundos debe actualizar el canvas
-   * @param {number} timeUpdate 
-   */
-  constructor(timeUpdate=15) {
+  constructor() {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.timeUpdate = timeUpdate;
-    this.ball = new Ball(settings.canvasWidth / 2, settings.canvasHeight - 30);
-    this.pallet = new Pallet()
+    this.timeUpdate = 15;
+    this.ball = new Ball();
+    this.pallet = new Pallet();
+    this.point = new Point();
   }
 
+  /**
+   * Método principal del juego, loop principal
+   */
   run(){
     this.interval = setInterval(() => {
       this.cleanCanvas();
       this.ball.draw(this.ctx);
       this.pallet.draw(this.ctx);
+      this.point.draw(this.ctx);
       this.ball.move();
       this.checkCollideBallPallet();
       this.checkEndGame();

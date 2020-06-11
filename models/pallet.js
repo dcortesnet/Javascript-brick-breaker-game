@@ -8,6 +8,10 @@ class Pallet {
     document.addEventListener('keydown',  (e) => this.move(e), false)
   }
 
+  /**
+   * Método que dibuja la paleta
+   * @param {*} ctx 
+   */
   draw(ctx){
     ctx.beginPath();
     ctx.rect(this.coordX, settings.canvasHeight - this.height , this.width, this.height);
@@ -16,6 +20,10 @@ class Pallet {
     ctx.closePath();
   }
 
+  /**
+   * Método que mueves las coordenadas de la paleta según el evento keydown
+   * @param {*} event 
+   */
   move(event){
     switch (event.keyCode){
       case 37:

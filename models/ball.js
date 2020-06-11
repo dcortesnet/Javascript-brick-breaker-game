@@ -1,21 +1,11 @@
 class Ball {
 
-  /**
-   * Se indica las posiciones actuales en las coords X e Y del canvas en donde la pelota iniciará
-   * Se indica la velocidad que cambiará la pelota en pixeles
-   * Se indica el radio de la pelota
-   * @param {number} initialXPosition 
-   * @param {number} initialYPosition 
-   * @param {number} speedX 
-   * @param {number} speedY 
-   * @param {number} ballRadius
-   */
-  constructor(initialXPosition, initialYPosition, speedX=2, speedY=-2, ballRadius=10) {
-    this.coordX = initialXPosition;
-    this.coordY = initialYPosition;
-    this.speedX = speedX;
-    this.speedY = speedY;
-    this.ballRadius = ballRadius;
+  constructor() {
+    this.coordX = settings.canvasWidth / 2;
+    this.coordY = settings.canvasHeight - 30;
+    this.speedX = 2;
+    this.speedY = -2;
+    this.ballRadius = 10;
   }
 
   /**
@@ -30,6 +20,9 @@ class Ball {
     ctx.closePath();
   }
 
+  /**
+   * Método que mueves las coordenadas de la pelota en cada loop
+   */
   move(){
     if(this.coordX >= (settings.canvasWidth -10) || this.coordX <= 10){
       this.collideX();
