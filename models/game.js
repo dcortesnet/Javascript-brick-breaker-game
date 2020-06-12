@@ -2,19 +2,25 @@ class Game {
 
   constructor() {
     this.canvas = document.getElementById('canvas');
+    this.canvas.width = settings.canvasWidth;
+    this.canvas.height = settings.canvasHeight;
     this.ctx = this.canvas.getContext('2d');
     this.timeUpdate = 15;
     this.ball = new Ball();
     this.pallet = new Pallet();
     this.point = new Point();
+    this.wall = new Wall();
   }
 
   /**
    * Método principal del juego, loop principal
    */
   run(){
+    
+    
     this.interval = setInterval(() => {
       this.cleanCanvas();
+      this.wall.draw(this.ctx);
       this.ball.draw(this.ctx);
       this.pallet.draw(this.ctx);
       this.point.draw(this.ctx);

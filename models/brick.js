@@ -1,8 +1,9 @@
 class Brick {
   
   constructor() {
-    this.width = 40;
-    this.height = 10;
+    // 480 / 40 = 12
+    this.width = 40; // 40 es el ancho del ladrillo
+    this.height = 20; // Número a medida
   }
 
   /**
@@ -13,8 +14,10 @@ class Brick {
    */
   draw(ctx, positionX, positionY){
     ctx.beginPath();
-    ctx.rect(positionX, positionY , this.width, this.height);
+    ctx.rect(positionX, positionY, this.width, this.height);
     ctx.fillStyle = "#0095DD";
+    ctx.strokeStyle = "white";
+    ctx.stroke();
     ctx.fill();
     ctx.closePath();
   }
