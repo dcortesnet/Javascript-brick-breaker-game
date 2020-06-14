@@ -16,8 +16,6 @@ class Game {
    * Método principal del juego, loop principal
    */
   run(){
-    
-    
     this.interval = setInterval(() => {
       this.cleanCanvas();
       this.wall.draw(this.ctx);
@@ -45,6 +43,20 @@ class Game {
     if(this.ball.coordY >= 310 && this.ball.coordX >= this.pallet.coordX && this.ball.coordX <= (this.pallet.coordX + this.pallet.width)){
       this.ball.collideY();
     }
+  }
+
+  /**
+   * Método que comprueba las coliciones en que eje fúe para cambiar la dirección de la pelota
+   * destruyendo el ladrillo afectado en el muro
+   * 
+   * Detección de colisión manual:
+   *  La posición "x" de la bola es mayor que la posición "x" del ladrillo
+   *  La posición "x" de la bola es menor que la posición del ladrillo más el ancho del ladrillo
+   *  La posición "y" de la bola es mayor que la posición "y" del ladrillo.
+   *  La posición "y" de la bola es menor que la posición del ladrillo más su altura.
+   */
+  checkCollideBallInWall(){
+    
   }
   
   /**
