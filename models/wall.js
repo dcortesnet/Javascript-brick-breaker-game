@@ -32,7 +32,6 @@ class Wall {
    * @param {*} ctx 
    */
   draw(ctx){
-    console.log(this.bricks);
     for (let index = 0; index < this.bricks.length; index++) {
       const brick = this.bricks[index];
       brick.draw(ctx);

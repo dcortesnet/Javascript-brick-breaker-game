@@ -8,4 +8,4 @@ https://developer.mozilla.org/es/docs/Web/Guide/HTML/Canvas_tutorial
 
 ## Correr juego
 
-* Solo es necesario abrir el fichero index.html
+* Solo es necesario abrir el fichero index.html en un navegador ( Preferencia chrome )

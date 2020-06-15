@@ -5,7 +5,7 @@ class Game {
     this.canvas.width = settings.canvasWidth;
     this.canvas.height = settings.canvasHeight;
     this.ctx = this.canvas.getContext('2d');
-    this.timeUpdate = 15;
+    this.timeUpdate = 12;
     this.ball = new Ball();
     this.pallet = new Pallet();
     this.point = new Point();
@@ -23,7 +23,9 @@ class Game {
       this.pallet.draw(this.ctx);
       this.point.draw(this.ctx);
       this.ball.move();
+      this.checkCollideBallInWall();
       this.checkCollideBallPallet();
+      this.checkWinGame();
       this.checkEndGame();
     }, this.timeUpdate);
   }
@@ -56,7 +58,19 @@ class Game {
    *  La posición "y" de la bola es menor que la posición del ladrillo más su altura.
    */
   checkCollideBallInWall(){
-    
+    // Se debe recorrer todo comprobando las pos de cada ladrillo
+    for (let index = 0; index < this.wall.bricks.length; index++) {
+      const brick = this.wall.bricks[index];
+      
+      if(this.ball.coordX >= brick.coordX  && this.ball.coordX <= (brick.coordX + brick.width) && this.ball.coordY >= brick.coordY && this.ball.coordY <= (brick.coordY + brick.height)){
+        // Revertir la pelota
+        this.ball.collideX();
+        this.ball.collideY();
+        this.wall.bricks.splice(index, 1);
+        this.point.points += 10;
+        // Eliminar el bloque 
+      }
+    }
   }
   
   /**
@@ -65,6 +79,12 @@ class Game {
   checkEndGame(){
     if(this.ball.coordY >= settings.canvasHeight){
       this.finishGame('Juego perdido');
+    }
+  }
+
+  checkWinGame(){
+    if(this.point.points == (this.wall.bricks.length * 10)){
+      this.finishGame('Juego ganado');
     }
   }
 

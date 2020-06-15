@@ -1,9 +1,9 @@
 class Brick {
   
-  constructor(positionX, positionY) {
+  constructor(coordX, coordY) {
     // 480 / 40 = 12
-    this.positionX = positionX;
-    this.positionY = positionY;
+    this.coordX = coordX;
+    this.coordY = coordY;
     this.width = 40; // 40 es el ancho del ladrillo
     this.height = 20; // Número a medida
   }
@@ -14,7 +14,7 @@ class Brick {
    */
   draw(ctx){
     ctx.beginPath();
-    ctx.rect(this.positionX, this.positionY, this.width, this.height);
+    ctx.rect(this.coordX, this.coordY, this.width, this.height);
     ctx.fillStyle = "#0095DD";
     ctx.strokeStyle = "white";
     ctx.stroke();
